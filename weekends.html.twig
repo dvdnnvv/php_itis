@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ monthName }} {{ year }}{% endblock %}
+
+{% block body %}
+    <h1>{{ monthName }} {{ year }} — выходные</h1>
+
+    <p>
+        Формат:
+        <a href="{{ path('app_calendar', {format: 'table', month: month}) }}">Таблица</a> |
+        <a href="{{ path('app_calendar', {format: 'list', month: month}) }}">Список</a> |
+        <a href="{{ path('app_calendar', {format: 'weekends', month: month}) }}">Выходные</a>
+    </p>
+
+    <table cellpadding="10" cellspacing="0" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                {% for name in weekdayNames %}
+                    <th style="font-weight: bold;">{{ name }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for week in weeks %}
+                <tr>
+                    {% for day in week %}
+                        <td align="center"
+                            style="
+                                {% if not day.isCurrentMonth %}color: #ddd;{% endif %}
+                                {% if day.isWeekend and day.isCurrentMonth %}color: red; font-weight: bold;{% endif %}
+                            ">
+                            {{ day.day }}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
