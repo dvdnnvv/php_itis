@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block body %}
+    <style>
+        .form-container { max-width: 400px; margin: 40px auto; font-family: sans-serif; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
+        .form-group input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .form-error { color: #dc3545; font-size: 14px; margin-top: 5px; }
+        .form-error ul { margin: 0; padding-left: 20px; }
+        .btn-submit { background: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; }
+        .btn-submit:hover { background: #0056b3; }
+        .alert-success { background: #d4edda; color: #155724; padding: 15px; border-radius: 4px; margin-bottom: 20px; border: 1px solid #c3e6cb; }
+    </style>
+
+    <div class="form-container">
+        <h1 style="text-align: center;">Регистрация</h1>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert-success">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+
+        {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+                <div class="form-error">{{ form_errors(form.name) }}</div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+                <div class="form-error">{{ form_errors(form.email) }}</div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.password.first) }}
+                {{ form_widget(form.password.first) }}
+                <div class="form-error">{{ form_errors(form.password.first) }}</div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.password.second) }}
+                {{ form_widget(form.password.second) }}
+                <div class="form-error">{{ form_errors(form.password.second) }}</div>
+            </div>
+
+            {{ form_widget(form.submit) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
