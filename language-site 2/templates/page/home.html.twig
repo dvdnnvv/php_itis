@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'nav.home'|trans }}{% endblock %}
+{% block body %}
+<p class="label">{{ 'home.label'|trans }}</p>
+<h1>{{ 'home.title'|trans }}</h1>
+<p class="lead">{{ 'home.intro'|trans }}</p>
+<p>{{ 'home.text'|trans }}</p>
+<a class="button" href="{{ path('app_meetings') }}">{{ 'home.button'|trans }}</a>
+{% endblock %}

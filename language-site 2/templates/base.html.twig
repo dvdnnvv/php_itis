@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %} | {{ 'site.name'|trans }}</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+    <a class="logo" href="{{ path('app_home') }}">{{ 'site.name'|trans }}</a>
+    <nav aria-label="{{ 'nav.label'|trans }}">
+        <a href="{{ path('app_home') }}" {% if app.current_route == 'app_home' %}aria-current="page"{% endif %}>{{ 'nav.home'|trans }}</a>
+        <a href="{{ path('app_about') }}" {% if app.current_route == 'app_about' %}aria-current="page"{% endif %}>{{ 'nav.about'|trans }}</a>
+        <a href="{{ path('app_meetings') }}" {% if app.current_route == 'app_meetings' %}aria-current="page"{% endif %}>{{ 'nav.meetings'|trans }}</a>
+    </nav>
+</header>
+<main>{% block body %}{% endblock %}</main>
+<footer>{{ 'site.footer'|trans }}</footer>
+</body>
+</html>

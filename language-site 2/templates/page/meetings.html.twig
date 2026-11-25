@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'nav.meetings'|trans }}{% endblock %}
+{% block body %}
+<p class="label">{{ 'meetings.label'|trans }}</p>
+<h1>{{ 'meetings.title'|trans }}</h1>
+<p class="lead">{{ 'meetings.intro'|trans }}</p>
+<div class="cards">
+    <article><h2>{{ 'meetings.first.title'|trans }}</h2><p>{{ 'meetings.first.text'|trans }}</p></article>
+    <article><h2>{{ 'meetings.second.title'|trans }}</h2><p>{{ 'meetings.second.text'|trans }}</p></article>
+</div>
+<p>{{ 'meetings.note'|trans }}</p>
+{% endblock %}
